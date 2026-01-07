@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Tĩnh Của Tôi</title>
+    <!-- Sử dụng Tailwind CSS CDN để giao diện đẹp hơn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Tùy chỉnh thêm nếu cần */
+        .image-container {
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+    <div class="max-w-2xl w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+        <!-- Phần nội dung phía trên -->
+        <div class="p-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">Chào mừng đến với trang web của tôi</h1>
+            <p class="text-gray-600 mb-6">
+                Đây là một ví dụ về trang HTML tĩnh tích hợp hình ảnh từ liên kết trực tuyến. 
+                Hình ảnh bên dưới được lấy từ nguồn Unsplash.
+            </p>
+
+            <!-- Khu vực chứa ảnh -->
+            <div class="image-container relative rounded-xl overflow-hidden bg-gray-200 aspect-video mb-6">
+                <!-- 
+                    - src: Link ảnh trực tuyến
+                    - alt: Mô tả ảnh cho SEO và trợ năng
+                    - onerror: Hàm xử lý nếu link ảnh bị hỏng (thay bằng ảnh placeholder)
+                -->
+                <img 
+                    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                    alt="Cảnh thiên nhiên đẹp"
+                    class="w-full h-full object-cover"
+                    onerror="this.onerror=null; this.src='https://via.placeholder.com/1000x600?text=Kh%C3%B4ng+th%E1%BB%83+t%E1%BA%A3i+%E1%BA%A3nh';"
+                >
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                    <span class="text-white text-sm font-medium">Hình ảnh: Thiên nhiên hùng vĩ</span>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-4">
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition duration-200">
+                    Tìm hiểu thêm
+                </a>
+                <button onclick="changeImage()" class="border border-gray-300 hover:bg-gray-50 text-gray-700 px-6 py-2 rounded-lg font-medium transition duration-200">
+                    Đổi ảnh ngẫu nhiên
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 px-8 py-4 border-t border-gray-100 text-center">
+            <p class="text-sm text-gray-500 italic">© 2026 Trang Web Tĩnh - Được tạo bởi Gemini</p>
+        </div>
+    </div>
+
+    <script>
+        // Hàm thay đổi ảnh ngẫu nhiên để minh họa tính tương tác
+        function changeImage() {
+            const imgElement = document.querySelector('img');
+            const randomId = Math.floor(Math.random() * 1000);
+            imgElement.src = `https://picsum.photos/seed/${randomId}/1000/600`;
+        }
+    </script>
+</body>
+</html>
